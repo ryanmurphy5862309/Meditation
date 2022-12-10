@@ -1,0 +1,35 @@
+// Import the Alexa Skills Kit and the required modules
+const Alexa = require('alexa-sdk');
+const APP_ID = 'your-app-id-here';
+
+// Define the intents and their corresponding handlers
+const intents = {
+  BeginMeditationIntent: function() {
+    // Prompt the user to sit in a comfortable position and close their eyes
+    this.emit(':ask', 'To begin the meditation, please sit in a comfortable position and close your eyes.');
+  },
+  FocusOnBreathIntent: function() {
+    // Prompt the user to focus on their breath and breathe deeply
+    this.emit(':ask', 'Now, focus on your breath and take a few deep breaths in and out.');
+  },
+  BodyScanIntent: function() {
+    // Prompt the user to scan their body and release any tension they may be holding
+    this.emit(':ask', 'Next, do a body scan and release any tension you may be holding in your muscles.');
+  },
+  AffirmationIntent: function() {
+    // Prompt the user to repeat a positive affirmation to themselves
+    this.emit(':ask', 'Now, repeat the following affirmation to yourself: "I am at peace and in control."');
+  },
+  EndMeditationIntent: function() {
+    // Prompt the user to slowly open their eyes and return to their day
+    this.emit(':ask', 'To end the meditation, slowly open your eyes and return to your day, feeling calm and centered.');
+  }
+};
+
+// Initialize the Alexa Skills Kit and register the intents
+exports.handler = function(event, context, callback) {
+  const alexa = Alexa.handler(event, context);
+  alexa.APP_ID = APP_ID;
+  alexa.registerHandlers(intents);
+  alexa.execute();
+};
